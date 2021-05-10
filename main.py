@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+from pipe import Pipe
 
 
 def update_label(data, title, font, x, y, gameDisPlay):
@@ -29,6 +30,8 @@ def run_game():
     dt = 0
     game_time = 0
 
+    pi = Pipe(gameDisplay,DISPLAY_W,300,PIPE_LOWER)
+
     while running:
         dt = clock.tick(FPS)
         game_time += dt
@@ -40,6 +43,7 @@ def run_game():
             elif event.type == pygame.KEYDOWN:
                 running = False
         update_data_labels(gameDisplay, dt, game_time, label_font)
+        pi.update(dt)
         pygame.display.update()
 
 
